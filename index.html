@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>ARMORBOT ELITE — Dashboard Replica</title>
+<style>
+  :root{
+    --w:732px;
+    --ink:#505050;
+    --text:#303030;
+    --light:#919191;
+    --line:#e7e7e7;
+    --blue:#2188c3;
+    --red:#b43132;
+    --green:#75b91c;
+    --nav:#f7f7f7;
+    --icon:#666666;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#fff;font-family:Roboto,Arial,sans-serif;color:var(--text);font-synthesis:none}
+  body{min-height:100vh;display:flex;justify-content:center;align-items:flex-start}
+  .screen{width:var(--w);min-height:1536px;background:#fff;overflow:hidden;position:relative}
+  .header{height:106px;display:flex;align-items:flex-start;position:relative;background:#fff}
+  .menu{position:absolute;left:18px;top:38px;width:34px;height:27px}
+  .menu span{display:block;height:4px;background:#222;margin-bottom:5px;border-radius:1px}
+  .header-title{position:absolute;left:71px;top:18px;line-height:1}
+  .history{font-size:24px;font-weight:400;margin-bottom:10px}
+  .symbols{font-size:27px;font-weight:400}
+  .header-icons{position:absolute;left:0;right:0;top:0;height:100%;display:block;color:#555}
+  .header-icons svg{position:absolute;display:block;overflow:visible;opacity:.92}
+
+
+  .header-icons svg:nth-child(1){left:488px;top:26px;width:50px;height:46px}
+  .header-icons svg:nth-child(2){left:579px;top:25px;width:48px;height:45px}
+  .header-icons svg:nth-child(3){left:671px;top:24px;width:47px;height:48px}
+
+  .summary{padding-top:8px;height:203px;border-bottom:1px solid #ededed}
+  .sumrow{height:44px;display:flex;align-items:center;padding:0 22px 0 24px;font-size:24px;line-height:1;font-weight:400}
+  .sumrow .label{font-weight:500;color:#555;white-space:nowrap}
+  .sumrow .leader{flex:1 1 auto;border-bottom:4px dotted #e2e2e2;margin:0 14px 1px 14px;transform:translateY(1px)}
+  .sumrow .value{font-weight:500;color:#111;white-space:nowrap;min-width:138px;text-align:right}
+  .sumrow.profit .value{color:var(--blue);font-weight:700}
+  .sumrow.withdrawal .value{color:#111;font-weight:400}
+
+  .balance-entry{height:90px;border-bottom:1px solid #ececec;position:relative;padding:14px 24px}
+  .balance-entry .label{font-size:25px;font-weight:500;color:#555}
+  .balance-entry .date{position:absolute;right:26px;top:17px;font-size:22px;color:#8e8e8e}
+  .balance-entry .amount{position:absolute;right:26px;top:48px;font-size:24px;font-weight:600;color:var(--red)}
+
+  .trades{position:relative;padding-bottom:95px}
+  .trade{position:relative;border-bottom:1px solid #e3e3e3;background:#fff}
+  .trade.expanded{height:234px}
+  .trade.compact{height:88px}
+  .trade .accent{position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--green)}
+  .trade-main{position:absolute;left:24px;right:23px;top:12px}
+  .trade-title{font-size:24px;line-height:28px;font-weight:500;white-space:nowrap}
+  .trade-title .action{color:var(--red);font-weight:500}
+  .prices{font-size:24px;line-height:31px;color:#8a8a8a;font-weight:400;white-space:nowrap}
+  .trade .date{position:absolute;right:0;top:9px;color:#8a8a8a;font-size:20px;line-height:24px;font-weight:400;white-space:nowrap}
+  .trade .profit{position:absolute;right:0;top:43px;color:var(--blue);font-size:23px;line-height:24px;font-weight:600}
+  .meta{position:absolute;left:24px;right:24px;top:92px;display:grid;grid-template-columns: 1fr 1fr;column-gap:45px;row-gap:10px;font-size:21px;color:#969696}
+  .meta .cell{display:flex;justify-content:space-between;white-space:nowrap}
+  .meta .k{font-weight:400}
+  .meta .v{color:#909090}
+
+  /* Reference screenshot has SIX bottom-nav icons. The SVG paths remain inline so GitHub Pages needs no external assets. */
+  .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:732px;height:92px;background:#f7f7f7;border-top:1px solid #efefef;z-index:20}
+  .nav-item{position:absolute;top:0;width:0;height:92px;display:block;color:#707070}
+  .nav-item svg{position:absolute;display:block;overflow:visible;opacity:1}
+  .nav-item.active{color:#3F9FE8}.nav-item.active svg{color:#3F9FE8}
+  
+
+  .nav-item:nth-child(1){left:43px}.nav-item:nth-child(1) svg{left:0;top:18px;width:62px;height:53px}
+  .nav-item:nth-child(2){left:156px}.nav-item:nth-child(2) svg{left:0;top:19px;width:63px;height:54px}
+  .nav-item:nth-child(3){left:276px}.nav-item:nth-child(3) svg{left:0;top:20px;width:62px;height:49px}
+  .nav-item:nth-child(4){left:397px}.nav-item:nth-child(4) svg{left:0;top:15px;width:60px;height:57px}
+  .nav-item:nth-child(5){left:514px}.nav-item:nth-child(5) svg{left:0;top:17px;width:63px;height:57px}
+  .nav-item:nth-child(6){left:630px}.nav-item:nth-child(6) svg{left:0;top:29px;width:45px;height:45px}
+
+  /* Mobile/GitHub Pages: scale the 732x1536 reference canvas proportionally instead of clipping its right edge. */
+  @media (max-width: 732px){
+    html,body{width:100%;overflow-x:hidden;margin:0}
+    body{display:block;background:#fff;min-height:calc(1536px * (100vw / 732px));}
+    .screen{width:732px;min-height:1536px;height:1536px;overflow:hidden;transform-origin:top left;transform:scale(calc(100vw / 732px));}
+    .nav{position:absolute;left:0;right:auto;bottom:0;transform:none;width:732px;height:92px;}
+  }
+</style>
+</head>
+<body>
+<div class="screen">
+  <!-- Header reconstructed from the reference: menu + two-line title + three inline SVG glyphs. -->
+  <header class="header">
+    <div class="menu" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="header-title"><div class="history">History</div><div class="symbols">All symbols</div></div>
+    <div class="header-icons" style="color:#606060"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 46" fill="#707070" fill-rule="evenodd"><path d="M 25.00,5.00 L 23.00,6.00 L 23.00,40.00 L 25.00,40.00 L 26.00,38.00 L 28.00,36.00 L 29.00,36.00 L 33.00,31.00 L 32.00,27.00 L 26.00,22.00 L 26.00,15.00 L 27.00,14.00 L 30.00,17.00 L 31.00,17.00 L 32.00,16.00 L 32.00,13.00 L 29.00,10.00 L 27.00,10.00 L 26.00,9.00 Z"/><path d="M 27.00,27.00 L 29.00,29.00 L 29.00,32.00 L 27.00,34.00 L 26.00,33.00 L 26.00,28.00 Z"/><path d="M 14.00,6.00 L 11.00,7.00 L 6.00,13.00 L 3.00,13.00 L 6.00,19.00 L 9.00,19.00 L 13.00,16.00 L 13.00,15.00 L 11.00,14.00 L 11.00,11.00 Z"/><path d="M 19.00,10.00 L 16.00,14.00 L 16.00,20.00 L 17.00,22.00 L 20.00,24.00 L 20.00,20.00 L 18.00,17.00 L 18.00,16.00 L 20.00,14.00 L 20.00,10.00 Z"/><path d="M 42.00,27.00 L 39.00,27.00 L 35.00,30.00 L 35.00,31.00 L 37.00,31.00 L 38.00,32.00 L 37.00,33.00 L 37.00,36.00 L 34.00,40.00 L 37.00,39.00 L 42.00,33.00 L 45.00,33.00 L 45.00,31.00 Z"/><path d="M 16.00,28.00 L 14.00,30.00 L 14.00,32.00 L 17.00,36.00 L 20.00,36.00 L 20.00,33.00 Z"/></svg><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 45" fill="#707070" fill-rule="evenodd"><path d="M 16.00,6.00 L 14.00,8.00 L 14.00,30.00 L 13.00,31.00 L 7.00,25.00 L 6.00,26.00 L 6.00,28.00 L 15.00,37.00 L 17.00,37.00 L 26.00,28.00 L 26.00,26.00 L 24.00,26.00 L 22.00,27.00 L 19.00,31.00 L 17.00,30.00 L 17.00,7.00 Z"/><path d="M 33.00,6.00 L 24.00,15.00 L 23.00,17.00 L 24.00,18.00 L 26.00,18.00 L 31.00,13.00 L 32.00,14.00 L 32.00,37.00 L 35.00,37.00 L 35.00,13.00 L 36.00,12.00 L 42.00,18.00 L 43.00,18.00 L 44.00,16.00 L 35.00,7.00 Z"/></svg><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47 48" fill="#707070" fill-rule="evenodd">
+<path d="M15 4 13 6v2l2 2h3l1-1V5l-2-1zM31 4l-2 3 2 3h3l1-1V5l-2-1zM5 11v32l1 1h37l2-3V13l-2-3-4-1-1 2-3 2h-6l-3-4h-3l-1 2-3 2h-6l-3-4H8z"/>
+<path d="M9 16h31l2 3v19l-2 3H9l-2-3V19z" fill="#fff"/>
+<path d="M12 22v4h3l1-1v-2l-1-1zm7 1v2l1 1h3v-2l-1-1zm8-1-1 1v2l1 1h2l1-1v-2l-1-1zm7 0-1 1v2l1 1h2l1-1v-2l-1-1zm-22 10v2l1 1h3v-2l-2-1zm8-1-1 1v2l1 1h2l1-1v-2l-1-1zm7 0-1 1v2l1 1h2l1-1v-2l-1-1zm7 0-1 1v2l1 1h2l1-1v-2l-1-1z"/>
+</svg></div>
+  </header>
+
+  <!-- Four-row financial summary with a dotted flex leader between label and value. -->
+  <section class="summary">
+    <div class="sumrow profit"><span class="label">Profit:</span><span class="leader"></span><span class="value">5 298.86</span></div>
+    <div class="sumrow"><span class="label">Deposit:</span><span class="leader"></span><span class="value">500.00</span></div>
+    <div class="sumrow withdrawal"><span class="label">Withdrawal:</span><span class="leader"></span><span class="value">-5 798.86</span></div>
+    <div class="sumrow"><span class="label">Balance:</span><span class="leader"></span><span class="value">0.00</span></div>
+  </section>
+
+  <section class="balance-entry">
+    <div class="label">Balance</div>
+    <div class="date">2026.07.07 21:58:45</div>
+    <div class="amount">-5 798.86</div>
+  </section>
+
+  <!-- Trade history: one expanded record followed by compact records. -->
+  <main class="trades">
+    <article class="trade expanded">
+      <div class="accent"></div>
+      <div class="trade-main">
+        <div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div>
+        <div class="prices">0.98723 → 0.98392</div>
+        <div class="date">2026.07.07 19:07:15</div>
+        <div class="profit">2.33</div>
+      </div>
+      <div class="meta">
+        <div class="cell"><span class="k">S/L:</span><span class="v">0.98897</span></div><div class="cell"><span class="k">Swap:</span><span class="v">0.00</span></div>
+        <div class="cell"><span class="k">T/P:</span><span class="v">0.98392</span></div><div class="cell"><span class="k">Taxes:</span><span class="v">0.00</span></div>
+        <div class="cell"><span class="k">ID:</span><span class="v">379006544</span></div><div class="cell"><span class="k">Commission:</span><span class="v">0.00</span></div>
+      </div>
+    </article>
+
+<article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98723 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article><article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article><article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article><article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article><article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article><article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article><article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article><article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article><article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article><article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article><article class="trade compact"><div class="trade-main"><div class="trade-title">AUDCADm, <span class="action">sell 0.01</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+  </main>
+
+  <nav class="nav" aria-label="Bottom navigation">
+    <div class="nav-item"><svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 48" fill="#707070" fill-rule="evenodd"><path d="M 48.00,9.00 L 29.00,10.00 L 28.00,11.00 L 32.00,16.00 L 29.00,19.00 L 30.00,21.00 L 34.00,17.00 L 34.00,15.00 L 32.00,14.00 L 32.00,12.00 L 33.00,11.00 L 45.00,11.00 L 46.00,12.00 L 46.00,25.00 L 45.00,26.00 L 42.00,23.00 L 41.00,23.00 L 26.00,38.00 L 26.00,39.00 L 29.00,38.00 L 40.00,26.00 L 42.00,26.00 L 45.00,29.00 L 47.00,29.00 Z"/><path d="M 26.00,21.00 L 22.00,20.00 L 11.00,31.00 L 9.00,31.00 L 7.00,29.00 L 7.00,45.00 L 20.00,44.00 L 21.00,43.00 L 21.00,42.00 L 19.00,40.00 L 31.00,28.00 L 30.00,25.00 Z"/></svg></div>
+    <div class="nav-item"><svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59 50" fill="#707070" fill-rule="evenodd"><path d="M 15.00,5.00 L 14.00,6.00 L 14.00,9.00 L 10.00,11.00 L 10.00,29.00 L 14.00,31.00 L 14.00,35.00 L 17.00,35.00 L 17.00,31.00 L 21.00,29.00 L 21.00,10.00 L 18.00,10.00 L 17.00,9.00 L 17.00,5.00 Z"/><path d="M 46.00,5.00 L 46.00,9.00 L 42.00,11.00 L 42.00,29.00 L 44.00,29.00 L 46.00,31.00 L 46.00,36.00 L 48.00,37.00 L 49.00,36.00 L 49.00,31.00 L 51.00,29.00 L 52.00,30.00 L 53.00,29.00 L 53.00,10.00 L 50.00,10.00 L 49.00,9.00 L 49.00,5.00 Z"/><path d="M 31.00,11.00 L 30.00,12.00 L 30.00,16.00 L 29.00,17.00 L 26.00,17.00 L 26.00,38.00 L 30.00,40.00 L 30.00,47.00 L 33.00,47.00 L 33.00,40.00 L 34.00,39.00 L 36.00,39.00 L 38.00,37.00 L 37.00,36.00 L 37.00,17.00 L 34.00,17.00 L 33.00,16.00 L 33.00,11.00 Z"/><path d="M 30.00,19.00 L 33.00,19.00 L 35.00,21.00 L 35.00,34.00 L 33.00,36.00 L 30.00,36.00 L 28.00,34.00 L 28.00,21.00 Z"/></svg></div>
+    <div class="nav-item"><svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 46" fill="#707070" fill-rule="evenodd"><path d="M 49.00,8.00 L 47.00,6.00 L 45.00,6.00 L 44.00,7.00 L 43.00,6.00 L 42.00,7.00 L 41.00,6.00 L 39.00,7.00 L 40.00,9.00 L 42.00,9.00 L 43.00,10.00 L 27.00,26.00 L 26.00,26.00 L 22.00,22.00 L 21.00,22.00 L 18.00,25.00 L 17.00,25.00 L 8.00,34.00 L 8.00,35.00 L 9.00,36.00 L 12.00,33.00 L 13.00,33.00 L 21.00,25.00 L 26.00,29.00 L 28.00,29.00 L 45.00,12.00 L 46.00,13.00 L 46.00,15.00 L 48.00,16.00 L 49.00,15.00 Z"/><path d="M 23.00,34.00 L 22.00,33.00 L 20.00,33.00 L 11.00,43.00 L 11.00,44.00 L 13.00,44.00 Z"/><path d="M 33.00,34.00 L 31.00,33.00 L 22.00,42.00 L 21.00,42.00 L 21.00,44.00 L 23.00,44.00 L 29.00,38.00 L 30.00,38.00 L 33.00,35.00 Z"/></svg></div>
+    <div class="nav-item active"><svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 53" fill="#3F9FE8" fill-rule="evenodd">
+<path d="M13 10 9 16v2l-2 4v4l-1 1v20l3 2h36l2-2V23l-1-1v-2l-3-7-3-3z"/>
+<path d="M9 25l1-1v-3l3-6 3-3h22l2 2 2 4v2l2 3 1 4-2 2h-7l-2 1v3l-3 4-2 1h-5l-4-3-2-4v-2h-7l-2-2z" fill="#fff"/>
+</svg></div>
+    <div class="nav-item"><svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59 53" fill="#707070">
+<path d="M16 7 15 8v9l-1 1v4l1 1-1 2v2l1 1-1 1 1 1-1 2v9l1 1-2 4h-3l-2-2V20l2-2h1v-2H8l-2 2v28l2 2h40l1-1V9l-1-2z"/>
+<path d="M20 9h22l1 1h2l2 2v31l-3 3H19l-2-3V12l3-3z" fill="#fff"/>
+<path d="M22 15h19l1 2H23l-1-2zM34 22h8v3h-8zM34 28h8v2h-8zM34 33h8v2h-8z"/>
+<path d="M23 22h7v13h-7z" fill="#707070"/><path d="M25 25h3v7h-3z" fill="#fff"/>
+</svg></div>
+    <div class="nav-item"><svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43 43" fill="#707070">
+  <path d="M31.6 6.4c-5.1-3.5-14.8-3.8-20.5-.8C6 8 2.8 13 2.8 19.5c0 4.8 2.2 9.1 6.5 12.1l-2.4 6.8 7.1-4.1c6.4 1.5 14.2.4 18.6-3.5 3.7-3.2 5.7-7.2 5.7-11.7 0-5.1-2.4-9.5-6.7-12.7Z"/>
+  <circle cx="13.3" cy="19.2" r="2.2" fill="#fff"/><circle cx="21.5" cy="19.2" r="2.2" fill="#fff"/><circle cx="29.7" cy="19.2" r="2.2" fill="#fff"/>
+</svg></div>
+  </nav>
+</div>
+</body>
+</html>
