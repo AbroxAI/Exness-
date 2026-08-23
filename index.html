@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ARMORBOT ELITE — Quotes</title>
+<style>
+@font-face{font-family:RobotoCondensed;src:local("Roboto Condensed")}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-width:0;height:100%;background:#fff;color:#111;font-family:RobotoCondensed,"Arial Narrow",Roboto,Arial,sans-serif;font-synthesis:none;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;overflow:hidden}
+body{display:block}
+:root{--scale:1}
+.stage{position:relative;width:min(732px,100vw);height:calc(1536px * var(--scale));margin:0 auto;background:#fff;overflow:hidden}
+.screen{position:absolute;left:0;top:0;width:732px;height:1536px;transform:scale(var(--scale));transform-origin:top left;background:#fff;overflow:hidden}
+
+.header{position:absolute;left:0;top:0;width:732px;height:106px;background:#fff;border-bottom:1px solid #dedede}
+.menu{position:absolute;left:19px;top:39px;width:35px;height:27px;cursor:pointer}
+.menu span{height:4px;background:#202020;display:block;margin-bottom:5px;border-radius:1px}
+.header-title{position:absolute;left:72px;top:21px;font-size:27px;line-height:1;font-weight:400}
+.header-actions{position:absolute;right:25px;top:27px;height:52px;display:flex;align-items:center;gap:38px}
+.plus{position:relative;width:38px;height:38px;cursor:pointer}
+.plus:before,.plus:after{content:"";position:absolute;background:#111;border-radius:1px}
+.plus:before{width:2.5px;height:36px;left:17.75px;top:1px}
+.plus:after{width:36px;height:2.5px;left:1px;top:17.75px}
+.quote-pencil{width:39px;height:39px;display:block;flex:0 0 39px;cursor:pointer;overflow:visible;position:relative;z-index:2}
+
+.quotes{position:absolute;left:0;top:106px;right:0;bottom:92px;overflow:hidden;background:#fff}
+.quote-row{height:133.8px;border-bottom:1px solid #e4e4e4;position:relative;background:#fff}
+.symbol{position:absolute;left:24px;top:18px;font-size:28px;line-height:32px;font-weight:400;color:#171717}
+.time{position:absolute;left:24px;top:52px;font-size:20px;line-height:23px;font-weight:400;color:#737373}
+.spread{position:absolute;left:24px;top:82px;font-size:20px;line-height:23px;font-weight:400;color:#737373}
+.price{position:absolute;top:17px;font-size:28px;line-height:32px;font-weight:600;letter-spacing:-.25px}
+.bid{left:385px;width:120px;text-align:right}
+.ask{right:34px;width:122px;text-align:right}
+.lowhigh{position:absolute;top:62px;font-size:20px;line-height:23px;font-weight:400;color:#777}
+.low{left:371px;width:134px;text-align:right}
+.high{right:30px;width:126px;text-align:right}
+.blue{color:#1478d0}
+.red{color:#c84942}
+.gray{color:#8f8f8f}
+
+.nav{position:absolute;left:0;bottom:0;transform:none;width:732px;height:92px;background:#f7f7f7;border-top:1px solid #ededed;z-index:10}
+.nav-item{position:absolute;top:0;width:100px;height:92px;border:0;padding:0;background:transparent;color:#5f5f5f;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;cursor:pointer;font-family:inherit}
+.nav-item svg{position:relative;width:47px;height:46px;margin-top:13px;display:block;overflow:visible;opacity:.88}
+.nav-item:nth-child(2) svg{width:49px;height:48px}
+.nav-item:nth-child(3) svg{width:45px;height:43px;margin-top:15px}
+.nav-item:nth-child(4) svg{width:46px;height:45px;margin-top:12px}
+.nav-item:nth-child(5) svg{width:47px;height:46px;margin-top:13px}
+.nav-item span{font-size:17px;line-height:20px;font-weight:400;margin-top:3px}
+.nav-item:first-child{color:#1684d8}
+.nav-item:first-child span{font-weight:600}
+
+@media (max-width:731px){.screen{will-change:transform}}
+</style>
+</head>
+<body>
+<div class="stage"><div class="screen">
+<header class="header">
+  <div class="menu" onclick="go('dashboard')" aria-label="History/Dashboard" role="button" tabindex="0"><span></span><span></span><span></span></div>
+  <div class="header-title">Quotes</div>
+  <div class="header-actions">
+    <div class="plus" aria-label="Add"></div>
+    <svg class="quote-pencil" viewBox="0 0 38 38" aria-label="Edit quotes" role="button" tabindex="0">
+      <path d="M9 28.5l2.5-7L27.4 5.6a3 3 0 0 1 4.2 4.2L15.7 25.7 9 28.5Z" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round"/>
+      <path d="M24.7 8.3l5 5" fill="none" stroke="#111" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M9 28.5l7.2-2.6" fill="none" stroke="#111" stroke-width="2.6" stroke-linecap="round"/>
+    </svg>
+  </div>
+</header>
+
+<main class="quotes">
+
+  <div class="quote-row">
+    <div class="symbol">AUDCADm</div>
+    <div class="time">19:07:15</div>
+    <div class="spread">Spread: 21</div>
+    <div class="price bid blue">0.98722</div>
+    <div class="price ask blue">0.98743</div>
+    <div class="lowhigh low">Low: 0.98722</div>
+    <div class="lowhigh high">High: 0.98897</div>
+  </div>
+  <div class="quote-row">
+    <div class="symbol">AUDJPYm</div>
+    <div class="time">19:07:14</div>
+    <div class="spread">Spread: 21</div>
+    <div class="price bid red">95.782</div>
+    <div class="price ask red">95.803</div>
+    <div class="lowhigh low">Low: 95.737</div>
+    <div class="lowhigh high">High: 95.935</div>
+  </div>
+  <div class="quote-row">
+    <div class="symbol">AUDNZDm</div>
+    <div class="time">19:07:15</div>
+    <div class="spread">Spread: 27</div>
+    <div class="price bid blue">1.09078</div>
+    <div class="price ask blue">1.09105</div>
+    <div class="lowhigh low">Low: 1.09040</div>
+    <div class="lowhigh high">High: 1.09177</div>
+  </div>
+  <div class="quote-row">
+    <div class="symbol">AUDUSDm</div>
+    <div class="time">19:07:14</div>
+    <div class="spread">Spread: 16</div>
+    <div class="price bid blue">0.65902</div>
+    <div class="price ask blue">0.65918</div>
+    <div class="lowhigh low">Low: 0.65851</div>
+    <div class="lowhigh high">High: 0.65916</div>
+  </div>
+  <div class="quote-row">
+    <div class="symbol">CADJPYm</div>
+    <div class="time">19:07:15</div>
+    <div class="spread">Spread: 24</div>
+    <div class="price bid red">96.970</div>
+    <div class="price ask red">96.994</div>
+    <div class="lowhigh low">Low: 96.852</div>
+    <div class="lowhigh high">High: 97.127</div>
+  </div>
+  <div class="quote-row">
+    <div class="symbol">EURAUDm</div>
+    <div class="time">19:07:14</div>
+    <div class="spread">Spread: 22</div>
+    <div class="price bid blue">1.76940</div>
+    <div class="price ask blue">1.76962</div>
+    <div class="lowhigh low">Low: 1.76818</div>
+    <div class="lowhigh high">High: 1.77005</div>
+  </div>
+  <div class="quote-row">
+    <div class="symbol">EURCADm</div>
+    <div class="time">19:07:15</div>
+    <div class="spread">Spread: 20</div>
+    <div class="price bid blue">1.60272</div>
+    <div class="price ask blue">1.60292</div>
+    <div class="lowhigh low">Low: 1.60131</div>
+    <div class="lowhigh high">High: 1.60356</div>
+  </div>
+  <div class="quote-row">
+    <div class="symbol">EURGBPm</div>
+    <div class="time">19:07:15</div>
+    <div class="spread">Spread: 17</div>
+    <div class="price bid blue">0.86532</div>
+    <div class="price ask blue">0.86549</div>
+    <div class="lowhigh low">Low: 0.86431</div>
+    <div class="lowhigh high">High: 0.86609</div>
+  </div>
+  <div class="quote-row">
+    <div class="symbol">EURJPYm</div>
+    <div class="time">19:07:15</div>
+    <div class="spread">Spread: 19</div>
+    <div class="price bid red">169.862</div>
+    <div class="price ask red">169.881</div>
+    <div class="lowhigh low">Low: 169.660</div>
+    <div class="lowhigh high">High: 170.078</div>
+  </div>
+  <div class="quote-row">
+    <div class="symbol">EURNZDm</div>
+    <div class="time">19:07:15</div>
+    <div class="spread">Spread: 26</div>
+    <div class="price bid blue">1.92824</div>
+    <div class="price ask blue">1.92850</div>
+    <div class="lowhigh low">Low: 1.92666</div>
+    <div class="lowhigh high">High: 1.92918</div>
+  </div>
+</main>
+<nav class="nav">
+      <button class="nav-item" style="left:8px" onclick="go('quotes')" aria-label="Quotes">
+        <svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 40" fill="#1684d8" fill-rule="evenodd" clip-rule="evenodd"><path d="M 20.00,12.00 17.00,11.00 5.00,23.00 0.00,22.00 0.00,38.00 1.00,39.00 5.00,39.00 10.00,37.00 16.00,37.00 16.00,35.00 14.00,32.00 26.00,21.00 26.00,18.00 23.00,16.00 Z M 44.00,0.00 26.00,1.00 22.00,3.00 26.00,7.00 23.00,11.00 24.00,13.00 30.00,8.00 27.00,5.00 31.00,3.00 40.00,3.00 41.00,4.00 41.00,16.00 40.00,17.00 36.00,15.00 20.00,31.00 20.00,32.00 24.00,31.00 36.00,19.00 38.00,19.00 40.00,22.00 43.00,22.00 43.00,16.00 44.00,15.00 Z"/></svg><span>Quotes</span>
+      </button>
+      <button class="nav-item" style="left:132px" onclick="go('chart')" aria-label="Chart">
+        <svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47 46" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 22.00,6.00 21.00,7.00 21.00,11.00 18.00,12.00 16.00,14.00 16.00,25.00 17.00,26.00 16.00,27.00 16.00,34.00 17.00,36.00 20.00,36.00 21.00,37.00 21.00,45.00 24.00,45.00 25.00,44.00 25.00,37.00 26.00,36.00 29.00,36.00 30.00,34.00 29.00,31.00 30.00,30.00 30.00,24.00 29.00,23.00 30.00,22.00 30.00,17.00 29.00,16.00 30.00,15.00 28.00,12.00 25.00,11.00 25.00,7.00 Z M 21.00,16.00 25.00,16.00 26.00,17.00 26.00,31.00 24.00,33.00 22.00,33.00 20.00,31.00 20.00,17.00 Z M 39.00,0.00 38.00,1.00 38.00,4.00 35.00,5.00 33.00,7.00 33.00,25.00 35.00,27.00 38.00,28.00 38.00,34.00 41.00,34.00 42.00,33.00 42.00,28.00 46.00,26.00 46.00,6.00 42.00,4.00 42.00,1.00 41.00,0.00 Z M 5.00,0.00 4.00,1.00 4.00,4.00 0.00,6.00 0.00,26.00 4.00,28.00 4.00,32.00 7.00,33.00 8.00,32.00 8.00,29.00 10.00,27.00 12.00,27.00 12.00,6.00 8.00,4.00 8.00,1.00 7.00,0.00 Z"/></svg><span>Chart</span>
+      </button>
+      <button class="nav-item" style="left:256px" onclick="go('trade')" aria-label="Trade">
+        <svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 42" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 27.00,30.00 24.00,28.00 13.00,39.00 13.00,40.00 16.00,41.00 24.00,33.00 25.00,33.00 Z M 16.00,29.00 13.00,28.00 9.00,33.00 3.00,38.00 3.00,41.00 5.00,41.00 8.00,39.00 Z M 43.00,2.00 41.00,0.00 40.00,1.00 36.00,1.00 35.00,0.00 32.00,2.00 33.00,4.00 36.00,5.00 20.00,21.00 17.00,19.00 16.00,17.00 13.00,17.00 0.00,29.00 0.00,32.00 2.00,32.00 14.00,21.00 19.00,25.00 21.00,25.00 39.00,7.00 40.00,8.00 40.00,11.00 43.00,11.00 Z"/></svg><span>Trade</span>
+      </button>
+      <button class="nav-item" style="left:380px" onclick="go('dashboard')" aria-label="History">
+        <svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 42" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 8.00,0.00 5.00,4.00 1.00,14.00 1.00,21.00 0.00,22.00 0.00,30.00 1.00,31.00 1.00,34.00 0.00,35.00 1.00,36.00 1.00,39.00 5.00,41.00 6.00,40.00 40.00,40.00 41.00,41.00 45.00,38.00 45.00,18.00 40.00,3.00 37.00,0.00 Z M 5.00,15.00 8.00,9.00 8.00,7.00 12.00,3.00 33.00,3.00 36.00,5.00 41.00,18.00 39.00,20.00 31.00,20.00 29.00,26.00 26.00,29.00 22.00,30.00 19.00,29.00 16.00,26.00 14.00,20.00 7.00,20.00 5.00,18.00 Z"/></svg><span>History</span>
+      </button>
+      <button class="nav-item" style="left:504px" onclick="go('messages')" aria-label="Messages">
+        <svg class="navsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47 45" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 31.00,16.00 30.00,19.00 31.00,19.00 32.00,21.00 30.00,22.00 30.00,24.00 35.00,26.00 34.00,27.00 31.00,27.00 30.00,30.00 39.00,30.00 39.00,28.00 35.00,26.00 39.00,24.00 37.00,20.00 39.00,17.00 38.00,16.00 Z M 18.00,16.00 17.00,17.00 17.00,30.00 25.00,30.00 26.00,29.00 26.00,17.00 25.00,16.00 Z M 21.00,20.00 22.00,21.00 22.00,25.00 21.00,26.00 20.00,25.00 20.00,21.00 Z M 17.00,10.00 17.00,11.00 19.00,12.00 38.00,12.00 39.00,11.00 37.00,8.00 19.00,8.00 Z M 11.00,0.00 9.00,3.00 9.00,40.00 8.00,41.00 6.00,41.00 3.00,38.00 4.00,37.00 3.00,34.00 4.00,33.00 4.00,13.00 6.00,12.00 6.00,9.00 3.00,9.00 0.00,12.00 0.00,41.00 2.00,44.00 45.00,44.00 46.00,43.00 46.00,2.00 45.00,0.00 Z M 14.00,4.00 16.00,3.00 17.00,4.00 18.00,3.00 20.00,4.00 21.00,3.00 39.00,3.00 43.00,5.00 43.00,39.00 39.00,41.00 16.00,41.00 13.00,39.00 12.00,37.00 13.00,36.00 12.00,35.00 13.00,33.00 12.00,32.00 12.00,29.00 13.00,28.00 12.00,26.00 12.00,16.00 13.00,15.00 12.00,13.00 12.00,10.00 13.00,9.00 12.00,7.00 Z"/></svg><span>Messages</span>
+      </button><div class="nav-item"><svg class="navsvg" clip-rule="evenodd" fill="#6a6a6a" fill-rule="evenodd" viewbox="0 0 46 45" xmlns="http://www.w3.org/2000/svg"><path d="M 38.00,5.00 28.00,0.00 16.00,0.00 9.00,3.00 3.00,9.00 0.00,15.00 0.00,25.00 5.00,33.00 5.00,37.00 3.00,41.00 1.00,42.00 1.00,44.00 7.00,44.00 16.00,40.00 29.00,40.00 34.00,38.00 41.00,32.00 44.00,26.00 45.00,19.00 44.00,18.00 44.00,14.00 Z M 32.00,17.00 34.00,17.00 36.00,19.00 36.00,22.00 34.00,24.00 32.00,24.00 30.00,22.00 30.00,19.00 Z M 21.00,17.00 23.00,17.00 25.00,19.00 25.00,22.00 23.00,24.00 21.00,24.00 19.00,22.00 19.00,19.00 Z M 11.00,17.00 15.00,19.00 15.00,22.00 13.00,24.00 11.00,24.00 8.00,21.00 Z"></path></svg></div>
+</nav>
+</div></div>
+<script>
+function fit(){document.documentElement.style.setProperty("--scale",String(Math.min(1,innerWidth/732)))}
+fit();addEventListener("resize",fit,{passive:true});
+function go(target){
+  if(target==="quotes") location.href="index.html";
+  else if(target==="dashboard") location.href="dashboard.html";
+  else location.href=target+".html";
+}
+</script>
+</body>
+</html>
