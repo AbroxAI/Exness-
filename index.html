@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ARMORBOT ELITE — Full Replica</title>
+<style>
+  :root{--W:608px;--H:1280px;--s:1}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;min-height:100%;overflow-x:hidden}
+  body{font-family:Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+  #stage{position:relative;width:min(608px,100vw);height:calc(1280px * var(--s));margin:0 auto;background:#fff;overflow:hidden}
+  #canvas{position:absolute;left:0;top:0;width:608px;height:1280px;transform-origin:top left;transform:scale(var(--s));background:#fff;overflow:hidden}
+  .layer{position:absolute;inset:0;width:608px;height:1280px}
+  .state{display:none}.state.active{display:block}
+  .state-img{width:608px;height:1280px;display:block;object-fit:fill;user-select:none;-webkit-user-drag:none}
+  #history-frame{border:0;width:608px;height:1280px;display:block;background:#fff}
+  .hotspot{position:absolute;z-index:20;background:transparent;border:0;padding:0;margin:0;cursor:pointer}
+  .hotspot:focus{outline:none}
+  #global-overlay{position:absolute;inset:0;z-index:50;display:none}
+  #global-overlay.open{display:block}
+  .drawer-close{position:absolute;left:0;top:0;width:608px;height:1280px}
+  .drawer-menu{position:absolute;left:0;top:0;width:345px;height:1280px}
+  .date-close{position:absolute;left:0;right:0;top:0;bottom:0;z-index:10}
+  /* Small visual hit zones only; screenshots supply the actual pixels. */
+  .nav-q{left:0;top:1200px;width:100px;height:80px}
+  .nav-chart{left:100px;top:1200px;width:100px;height:80px}
+  .nav-trade{left:200px;top:1200px;width:100px;height:80px}
+  .nav-history{left:300px;top:1200px;width:100px;height:80px}
+  .nav-journal{left:400px;top:1200px;width:100px;height:80px}
+  .nav-chat{left:500px;top:1200px;width:108px;height:80px}
+  .menu-zone{left:0;top:0;width:60px;height:90px}
+  .calendar-zone{left:555px;top:0;width:53px;height:90px}
+  .date-custom-zone{right:0;top:355px;width:355px;height:78px;z-index:40}
+  .date-picker-field-zone{left:105px;top:285px;width:395px;height:180px;z-index:40}
+  .date-cancel-zone{left:0;top:1000px;width:304px;height:120px;z-index:40}
+  .date-done-zone{right:0;top:1000px;width:304px;height:120px;z-index:40}
+  @media (min-width:609px){#stage{margin-left:auto;margin-right:auto}}
+</style>
+</head>
+<body>
+<div id="stage"><div id="canvas">
+  <section id="history" class="layer state active">
+    <iframe id="history-frame" src="dashboard.html" title="History dashboard"></iframe>
+    <button class="hotspot menu-zone" data-action="drawer"></button>
+    <button class="hotspot calendar-zone" data-action="date"></button>
+    <button class="hotspot nav-q" data-action="quotes"></button>
+    <button class="hotspot nav-chart" data-action="chart"></button>
+    <button class="hotspot nav-trade" data-action="history"></button>
+    <button class="hotspot nav-history" data-action="history"></button>
+    <button class="hotspot nav-journal" data-action="journal"></button>
+    <button class="hotspot nav-chat" data-action="chat"></button>
+  </section>
+
+  <section id="date" class="layer state">
+    <img class="state-img" src="states/date-menu.jpg" alt="Date range menu">
+    <button class="hotspot date-custom-zone" data-action="custom"></button>
+    <button class="hotspot date-close" data-action="history"></button>
+  </section>
+
+  <section id="custom" class="layer state">
+    <img class="state-img" src="states/custom-period.jpg" alt="Custom period picker">
+    <button class="hotspot date-picker-field-zone" data-action="keypad"></button>
+    <button class="hotspot date-cancel-zone" data-action="history"></button>
+    <button class="hotspot date-done-zone" data-action="history"></button>
+  </section>
+
+  <section id="keypad" class="layer state">
+    <img class="state-img" src="states/keypad.jpg" alt="Numeric keyboard">
+    <button class="hotspot date-cancel-zone" data-action="history"></button>
+    <button class="hotspot date-done-zone" data-action="history"></button>
+  </section>
+
+  <section id="chart" class="layer state">
+    <img class="state-img" src="states/chart.jpg" alt="Chart screen">
+    <button class="hotspot menu-zone" data-action="drawer-chart"></button>
+    <button class="hotspot nav-q" data-action="quotes"></button>
+    <button class="hotspot nav-chart" data-action="chart"></button>
+    <button class="hotspot nav-history" data-action="history"></button>
+  </section>
+
+  <section id="quotes" class="layer state">
+    <img class="state-img" src="states/quotes.jpg" alt="Quotes screen">
+    <button class="hotspot menu-zone" data-action="drawer-quotes"></button>
+    <button class="hotspot nav-q" data-action="quotes"></button>
+    <button class="hotspot nav-chart" data-action="chart"></button>
+    <button class="hotspot nav-history" data-action="history"></button>
+  </section>
+
+  <section id="drawer-chart" class="layer state">
+    <img class="state-img" src="states/drawer-chart.jpg" alt="Menu drawer over chart">
+    <button class="hotspot drawer-menu" data-action="chart"></button>
+    <button class="hotspot drawer-close" data-action="chart"></button>
+    <button class="hotspot nav-q" data-action="quotes"></button>
+    <button class="hotspot nav-chart" data-action="chart"></button>
+  </section>
+
+  <section id="drawer-quotes" class="layer state">
+    <img class="state-img" src="states/drawer-quotes.jpg" alt="Menu drawer over quotes">
+    <button class="hotspot drawer-menu" data-action="quotes"></button>
+    <button class="hotspot drawer-close" data-action="quotes"></button>
+    <button class="hotspot nav-q" data-action="quotes"></button>
+    <button class="hotspot nav-chart" data-action="chart"></button>
+  </section>
+
+  <div id="fallback" class="layer state" style="background:#fff"></div>
+</div></div>
+<script>
+(function(){
+  const root=document.documentElement;
+  const stateIds=['history','date','custom','keypad','chart','quotes','drawer-chart','drawer-quotes'];
+  function fit(){
+    const s=Math.min(1, window.innerWidth/608);
+    root.style.setProperty('--s',s);
+  }
+  function show(name){
+    if(!stateIds.includes(name)) name='history';
+    document.querySelectorAll('.state').forEach(x=>x.classList.remove('active'));
+    const el=document.getElementById(name); if(el) el.classList.add('active');
+    window.scrollTo(0,0);
+  }
+  fit(); window.addEventListener('resize',fit,{passive:true});
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('[data-action]'); if(!b) return;
+    const a=b.dataset.action;
+    if(a==='drawer') show('drawer-chart');
+    else if(a==='drawer-chart') show('drawer-chart');
+    else if(a==='drawer-quotes') show('drawer-quotes');
+    else if(a==='date') show('date');
+    else if(a==='custom') show('custom');
+    else if(a==='keypad') show('keypad');
+    else if(a==='quotes'||a==='chart'||a==='history'||a==='journal'||a==='chat') show(a==='journal'||a==='chat'?'history':a);
+  });
+  window.addEventListener('message',e=>{
+    if(!e.data) return;
+    if(e.data.type==='drawer') show('drawer-chart');
+    if(e.data.type==='dates') show('date');
+    if(e.data.type==='nav') show(e.data.target==='quotes'?'quotes':e.data.target==='chart'?'chart':'history');
+  });
+})();
+</script>
+</body>
+</html>
