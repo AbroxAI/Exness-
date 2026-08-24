@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ARMORBOT ELITE — Quotes</title>
+<style>
+@font-face{font-family:RobotoCondensed;src:local("Roboto Condensed")}
+:root{--scale:1;--nav-height:92px;--blue:#3F9FE8}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-width:0;height:100%;background:#fff;color:#111;font-family:RobotoCondensed,"Arial Narrow",Roboto,Arial,sans-serif;font-synthesis:none;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;overflow:hidden}
+body{display:block}
+.stage{position:relative;width:min(732px,100vw);height:calc(1536px * var(--scale));margin:0 auto;background:#fff;overflow:hidden}
+.screen{position:absolute;left:0;top:0;width:732px;height:1536px;transform:scale(var(--scale));transform-origin:top left;background:#fff;overflow:hidden}
+.header{position:absolute;left:0;top:0;width:732px;height:106px;background:#fff;border-bottom:1px solid #dedede}
+.menu{position:absolute;left:19px;top:39px;width:35px;height:27px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.menu span{display:block;height:4px;margin-bottom:5px;background:#202020;border-radius:1px}
+.header-title{position:absolute;left:72px;top:21px;font-size:27px;line-height:1;font-weight:400}
+.header-actions{position:absolute;right:25px;top:27px;height:52px;display:flex;align-items:center;gap:30px}
+.plus{position:relative;width:38px;height:38px;flex:0 0 38px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.plus:before,.plus:after{content:"";position:absolute;background:#111;border-radius:1px}
+.plus:before{width:2.5px;height:36px;left:17.75px;top:1px}
+.plus:after{width:36px;height:2.5px;left:1px;top:17.75px}
+.quote-edit{position:relative;width:48px;height:48px;margin:0;padding:0;border:0;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.quote-edit svg{width:40px;height:40px;display:block;overflow:visible;transition:transform .12s ease,opacity .12s ease}
+.quote-edit:hover svg{transform:scale(1.04)}
+.quote-edit:active svg{transform:scale(.94)}
+.quote-edit:focus-visible{outline:2px solid #3F9FE8;outline-offset:4px;border-radius:8px}
+.quotes{position:absolute;left:0;top:106px;right:0;bottom:92px;overflow:hidden;background:#fff}
+.quote-row{position:relative;height:133.8px;border-bottom:1px solid #e4e4e4;background:#fff}
+.symbol{position:absolute;left:24px;top:18px;font-size:28px;line-height:32px;font-weight:400;color:#171717}
+.time{position:absolute;left:24px;top:52px;font-size:20px;line-height:23px;font-weight:400;color:#737373}
+.spread{position:absolute;left:24px;top:82px;font-size:20px;line-height:23px;font-weight:400;color:#737373}
+.price{position:absolute;top:17px;font-size:28px;line-height:32px;font-weight:600;letter-spacing:-.25px}
+.bid{left:385px;width:120px;text-align:right}.ask{right:34px;width:122px;text-align:right}
+.lowhigh{position:absolute;top:62px;font-size:20px;line-height:23px;font-weight:400;color:#777}
+.low{left:371px;width:134px;text-align:right}.high{right:30px;width:126px;text-align:right}
+.blue{color:#1478d0}.red{color:#c84942}.gray{color:#8f8f8f}
+.nav{position:fixed;left:50%;bottom:0;width:732px;height:92px;transform:translateX(-50%) scale(var(--scale));transform-origin:center bottom;background:#f7f7f7;border-top:1px solid #ededed;z-index:99999;display:block;visibility:visible;opacity:1}
+.nav-item{position:absolute;top:0;width:70px;height:92px;display:block;color:#707070;cursor:pointer;z-index:100000;-webkit-tap-highlight-color:transparent;user-select:none}
+.nav-item svg{position:absolute;display:block;overflow:visible;pointer-events:none;user-select:none;-webkit-user-drag:none;opacity:.9}
+.nav-item:nth-child(1){left:51px}.nav-item:nth-child(1) svg{left:0;top:18px;width:47px;height:42px}
+.nav-item:nth-child(2){left:167px}.nav-item:nth-child(2) svg{left:0;top:18px;width:49px;height:48px}
+.nav-item:nth-child(3){left:290px}.nav-item:nth-child(3) svg{left:0;top:19px;width:45px;height:43px}
+.nav-item:nth-child(4){left:406px}.nav-item:nth-child(4) svg{left:0;top:15px;width:46px;height:45px}
+.nav-item:nth-child(5){left:521px}.nav-item:nth-child(5) svg{left:0;top:17px;width:48px;height:46px}
+.nav-item:nth-child(6){left:627px}.nav-item:nth-child(6) svg{left:0;top:18px;width:47px;height:46px}
+.nav-item.active{color:#3F9FE8}.nav-item.active svg{opacity:1}
+@media (max-width:731px){.screen{will-change:transform}.nav{will-change:transform}}
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="screen">
+<header class="header">
+<div class="menu" onclick="go('dashboard')" aria-label="History" role="button" tabindex="0"><span></span><span></span><span></span></div>
+<div class="header-title">Quotes</div>
+<div class="header-actions">
+<div class="plus" aria-label="Add" role="button" tabindex="0" onclick="addQuote()"></div>
+<button class="quote-edit" type="button" aria-label="Edit quotes" onclick="editQuotes()">
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M11 34.8 12.9 27 30.4 9.5a4.8 4.8 0 0 1 6.8 0l1.3 1.3a4.8 4.8 0 0 1 0 6.8L21 35.1 11 37Z" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M11 37 13.8 27.3 21 35.1Z" fill="none" stroke="#111" stroke-width="2.6" stroke-linejoin="round"/>
+<path d="m27.7 12.2 8.1 8.1" fill="none" stroke="#111" stroke-width="2.6" stroke-linecap="round"/>
+<path d="m11 37 3.7-.9" fill="none" stroke="#111" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
+</button>
+</div>
+</header>
+<main class="quotes">
+<div class="quote-row"><div class="symbol">AUDCADm</div><div class="time">19:07:15</div><div class="spread">Spread: 21</div><div class="price bid blue">0.98722</div><div class="price ask blue">0.98743</div><div class="lowhigh low">Low: 0.98722</div><div class="lowhigh high">High: 0.98897</div></div>
+<div class="quote-row"><div class="symbol">AUDJPYm</div><div class="time">19:07:14</div><div class="spread">Spread: 21</div><div class="price bid red">95.782</div><div class="price ask red">95.803</div><div class="lowhigh low">Low: 95.737</div><div class="lowhigh high">High: 95.935</div></div>
+<div class="quote-row"><div class="symbol">AUDNZDm</div><div class="time">19:07:15</div><div class="spread">Spread: 27</div><div class="price bid blue">1.09078</div><div class="price ask blue">1.09105</div><div class="lowhigh low">Low: 1.09040</div><div class="lowhigh high">High: 1.09177</div></div>
+<div class="quote-row"><div class="symbol">AUDUSDm</div><div class="time">19:07:14</div><div class="spread">Spread: 16</div><div class="price bid blue">0.65902</div><div class="price ask blue">0.65918</div><div class="lowhigh low">Low: 0.65851</div><div class="lowhigh high">High: 0.65916</div></div>
+<div class="quote-row"><div class="symbol">CADJPYm</div><div class="time">19:07:15</div><div class="spread">Spread: 24</div><div class="price bid red">96.970</div><div class="price ask red">96.994</div><div class="lowhigh low">Low: 96.852</div><div class="lowhigh high">High: 97.127</div></div>
+<div class="quote-row"><div class="symbol">EURAUDm</div><div class="time">19:07:14</div><div class="spread">Spread: 22</div><div class="price bid blue">1.76940</div><div class="price ask blue">1.76962</div><div class="lowhigh low">Low: 1.76818</div><div class="lowhigh high">High: 1.77005</div></div>
+<div class="quote-row"><div class="symbol">EURCADm</div><div class="time">19:07:15</div><div class="spread">Spread: 20</div><div class="price bid blue">1.60272</div><div class="price ask blue">1.60292</div><div class="lowhigh low">Low: 1.60131</div><div class="lowhigh high">High: 1.60356</div></div>
+<div class="quote-row"><div class="symbol">EURGBPm</div><div class="time">19:07:15</div><div class="spread">Spread: 17</div><div class="price bid blue">0.86532</div><div class="price ask blue">0.86549</div><div class="lowhigh low">Low: 0.86431</div><div class="lowhigh high">High: 0.86609</div></div>
+<div class="quote-row"><div class="symbol">EURJPYm</div><div class="time">19:07:15</div><div class="spread">Spread: 19</div><div class="price bid red">169.862</div><div class="price ask red">169.881</div><div class="lowhigh low">Low: 169.660</div><div class="lowhigh high">High: 170.078</div></div>
+<div class="quote-row"><div class="symbol">EURNZDm</div><div class="time">19:07:15</div><div class="spread">Spread: 26</div><div class="price bid blue">1.92824</div><div class="price ask blue">1.92850</div><div class="lowhigh low">Low: 1.92666</div><div class="lowhigh high">High: 1.92918</div></div>
+</main>
+</div>
+<nav class="nav" aria-label="Bottom navigation">
+<div class="nav-item active" onclick="go('quotes')" role="button" tabindex="0" aria-label="Quotes"><svg viewBox="0 0 45 40" xmlns="http://www.w3.org/2000/svg" fill="#3F9FE8" fill-rule="evenodd" clip-rule="evenodd"><path d="M 20.00,12.00 17.00,11.00 5.00,23.00 0.00,22.00 0.00,38.00 1.00,39.00 5.00,39.00 10.00,37.00 16.00,37.00 16.00,35.00 14.00,32.00 26.00,21.00 26.00,18.00 23.00,16.00 Z M 44.00,0.00 26.00,1.00 22.00,3.00 26.00,7.00 23.00,11.00 24.00,13.00 30.00,8.00 27.00,5.00 31.00,3.00 40.00,3.00 41.00,4.00 41.00,16.00 40.00,17.00 36.00,15.00 20.00,31.00 20.00,32.00 24.00,31.00 36.00,19.00 38.00,19.00 40.00,22.00 43.00,22.00 43.00,16.00 44.00,15.00 Z"/></svg></div>
+<div class="nav-item" onclick="go('chart')" role="button" tabindex="0" aria-label="Chart"><svg viewBox="0 0 47 46" xmlns="http://www.w3.org/2000/svg" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 22.00,6.00 21.00,7.00 21.00,11.00 18.00,12.00 16.00,14.00 16.00,25.00 17.00,26.00 16.00,27.00 16.00,34.00 17.00,36.00 20.00,36.00 21.00,37.00 21.00,45.00 24.00,45.00 25.00,44.00 25.00,37.00 26.00,36.00 29.00,36.00 30.00,34.00 29.00,31.00 30.00,30.00 30.00,24.00 29.00,23.00 30.00,22.00 30.00,17.00 29.00,16.00 30.00,15.00 28.00,12.00 25.00,11.00 25.00,7.00 Z M 21.00,16.00 25.00,16.00 26.00,17.00 26.00,31.00 24.00,33.00 22.00,33.00 20.00,31.00 20.00,17.00 Z M 39.00,0.00 38.00,1.00 38.00,4.00 35.00,5.00 33.00,7.00 33.00,25.00 35.00,27.00 38.00,28.00 38.00,34.00 41.00,34.00 42.00,33.00 42.00,28.00 46.00,26.00 46.00,6.00 42.00,4.00 42.00,1.00 41.00,0.00 Z M 5.00,0.00 4.00,1.00 4.00,4.00 0.00,6.00 0.00,26.00 4.00,28.00 4.00,32.00 7.00,33.00 8.00,32.00 8.00,29.00 10.00,27.00 12.00,27.00 12.00,6.00 8.00,4.00 8.00,1.00 7.00,0.00 Z"/></svg></div>
+<div class="nav-item" onclick="go('trade')" role="button" tabindex="0" aria-label="Trade"><svg viewBox="0 0 44 42" xmlns="http://www.w3.org/2000/svg" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 27.00,30.00 24.00,28.00 13.00,39.00 13.00,40.00 16.00,41.00 24.00,33.00 25.00,33.00 Z M 16.00,29.00 13.00,28.00 9.00,33.00 3.00,38.00 3.00,41.00 5.00,41.00 8.00,39.00 Z M 43.00,2.00 41.00,0.00 40.00,1.00 36.00,1.00 35.00,0.00 32.00,2.00 33.00,4.00 36.00,5.00 20.00,21.00 17.00,19.00 16.00,17.00 13.00,17.00 0.00,29.00 0.00,32.00 2.00,32.00 14.00,21.00 19.00,25.00 21.00,25.00 39.00,7.00 40.00,8.00 40.00,11.00 43.00,11.00 Z"/></svg></div>
+<div class="nav-item" onclick="go('dashboard')" role="button" tabindex="0" aria-label="History"><svg viewBox="0 0 46 42" xmlns="http://www.w3.org/2000/svg" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 8.00,0.00 5.00,4.00 1.00,14.00 1.00,21.00 0.00,22.00 0.00,30.00 1.00,31.00 1.00,34.00 0.00,35.00 1.00,36.00 1.00,39.00 5.00,41.00 6.00,40.00 40.00,40.00 41.00,41.00 45.00,38.00 45.00,18.00 40.00,3.00 37.00,0.00 Z M 5.00,15.00 8.00,9.00 8.00,7.00 12.00,3.00 33.00,3.00 36.00,5.00 41.00,18.00 39.00,20.00 31.00,20.00 29.00,26.00 26.00,29.00 22.00,30.00 19.00,29.00 16.00,26.00 14.00,20.00 7.00,20.00 5.00,18.00 Z"/></svg></div>
+<div class="nav-item" onclick="go('messages')" role="button" tabindex="0" aria-label="Messages"><svg viewBox="0 0 47 45" xmlns="http://www.w3.org/2000/svg" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 31.00,16.00 30.00,19.00 31.00,19.00 32.00,21.00 30.00,22.00 30.00,24.00 35.00,26.00 34.00,27.00 31.00,27.00 30.00,30.00 39.00,30.00 39.00,28.00 35.00,26.00 39.00,24.00 37.00,20.00 39.00,17.00 38.00,16.00 Z M 18.00,16.00 17.00,17.00 17.00,30.00 25.00,30.00 26.00,29.00 26.00,17.00 25.00,16.00 Z M 21.00,20.00 22.00,21.00 22.00,25.00 21.00,26.00 20.00,25.00 20.00,21.00 Z M 17.00,10.00 17.00,11.00 19.00,12.00 38.00,12.00 39.00,11.00 37.00,8.00 19.00,8.00 Z M 11.00,0.00 9.00,3.00 9.00,40.00 8.00,41.00 6.00,41.00 3.00,38.00 4.00,37.00 3.00,34.00 4.00,33.00 4.00,13.00 6.00,12.00 6.00,9.00 3.00,9.00 0.00,12.00 0.00,41.00 2.00,44.00 45.00,44.00 46.00,43.00 46.00,2.00 45.00,0.00 Z M 14.00,4.00 16.00,3.00 17.00,4.00 18.00,3.00 20.00,4.00 21.00,3.00 39.00,3.00 43.00,5.00 43.00,39.00 39.00,41.00 16.00,41.00 13.00,39.00 12.00,37.00 13.00,36.00 12.00,35.00 13.00,33.00 12.00,32.00 12.00,29.00 13.00,28.00 12.00,26.00 12.00,16.00 13.00,15.00 12.00,13.00 12.00,10.00 13.00,9.00 12.00,7.00 Z"/></svg></div>
+<div class="nav-item" role="button" tabindex="0" aria-label="More"><svg viewBox="0 0 46 45" xmlns="http://www.w3.org/2000/svg" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 38.00,5.00 28.00,0.00 16.00,0.00 9.00,3.00 3.00,9.00 0.00,15.00 0.00,25.00 5.00,33.00 5.00,37.00 3.00,41.00 1.00,42.00 1.00,44.00 7.00,44.00 16.00,40.00 29.00,40.00 34.00,38.00 41.00,32.00 44.00,26.00 45.00,19.00 44.00,18.00 44.00,14.00 Z M 32.00,17.00 34.00,17.00 36.00,19.00 36.00,22.00 34.00,24.00 32.00,24.00 30.00,22.00 30.00,19.00 Z M 21.00,17.00 23.00,17.00 25.00,19.00 25.00,22.00 23.00,24.00 21.00,24.00 19.00,22.00 19.00,19.00 Z M 11.00,17.00 15.00,19.00 15.00,22.00 13.00,24.00 11.00,24.00 8.00,21.00 Z"/></svg></div>
+</nav>
+</div>
+<script>
+(function(){function fit(){const scale=Math.min(1,window.innerWidth/732);document.documentElement.style.setProperty('--scale',String(scale))}fit();window.addEventListener('resize',fit,{passive:true})})();
+function go(target){if(target==='quotes'){location.href='index.html'}else if(target==='dashboard'){location.href='dashboard.html'}else{location.href=target+'.html'}}
+function addQuote(){}
+function editQuotes(){}
+document.querySelectorAll('.nav-item[role="button"]').forEach(function(item){item.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();item.click()}})});
+document.querySelectorAll('.menu[role="button"],.plus[role="button"]').forEach(function(item){item.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();item.click()}})});
+</script>
+</body>
+</html>
