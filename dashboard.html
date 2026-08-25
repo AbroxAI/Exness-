@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ARMORBOT ELITE — History</title>
+<style>
+:root{--scale:1;--w:732px;--nav-height:92px;--text:#303030;--blue:#2188c3;--red:#b43132;--green:#75b91c}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-width:0;height:100%;background:#fff;font-family:Roboto,Arial,sans-serif;color:var(--text);font-synthesis:none;overflow:hidden;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+body{display:block;min-height:100vh}
+.stage{position:relative;width:min(732px,100vw);height:calc(1536px * var(--scale));margin:0 auto;overflow:hidden;background:#fff}
+.screen{position:absolute;left:0;top:0;width:732px;height:1536px;min-height:1536px;background:#fff;overflow:hidden;transform:scale(var(--scale));transform-origin:top left}
+.header{height:106px;display:flex;align-items:flex-start;position:relative;background:#fff}
+.menu{position:absolute;left:18px;top:38px;width:34px;height:27px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.menu span{display:block;height:4px;background:#222;margin-bottom:5px;border-radius:1px}
+.header-title{position:absolute;left:71px;top:18px;line-height:1}.history{font-size:24px;font-weight:400;margin-bottom:10px}.symbols{font-size:27px;font-weight:400}
+.header-icons{position:absolute;left:0;right:0;top:0;height:100%;display:block;color:#555;z-index:2;overflow:visible}
+.header-icons svg{position:absolute;display:block;overflow:visible;opacity:.90}
+.header-icons svg:nth-child(1){left:480px;top:30px;width:43px;height:36px}.header-icons svg:nth-child(2){left:574px;top:31px;width:42px;height:35px}.header-icons svg:nth-child(3){left:664px;top:28px;width:44px;height:43px}
+.summary{padding-top:8px;height:203px;border-bottom:1px solid #ededed}
+.sumrow{height:44px;display:flex;align-items:center;padding:0 22px 0 24px;font-size:24px;line-height:1;font-weight:600;color:#4a4a4a}
+.sumrow .label{font-weight:700;color:#4a4a4a;white-space:nowrap}.sumrow .leader{flex:1 1 auto;border-bottom:4px dotted #e2e2e2;margin:0 14px 1px 14px;transform:translateY(1px)}
+.sumrow .value{min-width:138px;text-align:right;color:#111;white-space:nowrap;font-weight:650}.sumrow.profit .value{color:var(--blue);font-weight:700}.sumrow.withdrawal .value{color:#111;font-weight:600}
+.balance-entry{position:relative;height:90px;padding:14px 24px;border-bottom:1px solid #ececec}.balance-entry .label{font-size:25px;font-weight:700;color:#4a4a4a}.balance-entry .date{position:absolute;right:26px;top:17px;font-size:22px;color:#949494;font-weight:500}.balance-entry .amount{position:absolute;right:26px;top:48px;font-size:24px;color:var(--red);font-weight:700}
+.trades{position:relative;padding-bottom:92px}.trade{position:relative;border-bottom:1px solid #e3e3e3;background:#fff}.trade.expanded{height:234px}.trade.compact{height:88px}.trade .accent{position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--green)}
+.trade-main{position:absolute;left:24px;right:23px;top:12px}.trade-title{font-size:25px;line-height:29px;font-weight:700;white-space:nowrap;color:#3f3f3f}.trade-title .action{font-weight:700;color:var(--red)}.trade-title .action.buy{color:var(--blue)}.prices{font-size:25px;line-height:31px;color:#858585;font-weight:600;white-space:nowrap}
+.trade .date{position:absolute;right:0;top:9px;color:#949494;font-size:20px;line-height:24px;font-weight:500;white-space:nowrap}.trade .profit{position:absolute;right:0;top:43px;color:var(--blue);font-size:23px;line-height:24px;font-weight:700}
+.source-line{position:absolute;left:0;top:74px;right:0;font-size:21px;line-height:24px;font-weight:400;color:#8f8f8f;white-space:nowrap}
+.meta{position:absolute;left:24px;right:24px;top:120px;display:grid;grid-template-columns:1fr 1fr;column-gap:45px;row-gap:10px;font-size:20px;color:#8d8d8d;font-weight:500}.meta .cell{display:flex;justify-content:space-between;white-space:nowrap}.meta .k{font-weight:600;color:#888}.meta .v{color:#8d8d8d;font-weight:500}
+.nav{position:fixed;left:50%;bottom:0;width:732px;height:92px;transform:translateX(-50%) scale(var(--scale));transform-origin:center bottom;background:#f7f7f7;border-top:1px solid #ededed;z-index:99999;display:block;visibility:visible;opacity:1}
+.nav-item{position:absolute;top:0;width:70px;height:92px;display:block;color:#707070;cursor:pointer;z-index:100000;-webkit-tap-highlight-color:transparent;user-select:none}
+.nav-item svg{position:absolute;display:block;overflow:visible;pointer-events:none;user-select:none;-webkit-user-drag:none;opacity:.9}
+.nav-item:nth-child(1){left:51px}.nav-item:nth-child(1) svg{left:0;top:18px;width:47px;height:42px}
+.nav-item:nth-child(2){left:167px}.nav-item:nth-child(2) svg{left:0;top:18px;width:49px;height:48px}
+.nav-item:nth-child(3){left:290px}.nav-item:nth-child(3) svg{left:0;top:19px;width:45px;height:43px}
+.nav-item:nth-child(4){left:406px}.nav-item:nth-child(4) svg{left:0;top:15px;width:46px;height:45px}
+.nav-item:nth-child(5){left:521px}.nav-item:nth-child(5) svg{left:0;top:17px;width:48px;height:46px}
+.nav-item:nth-child(6){left:627px}.nav-item:nth-child(6) svg{left:0;top:18px;width:47px;height:46px}
+.nav-item.active{color:#3F9FE8}.nav-item.active svg{opacity:1}
+
+
+
+/* Calendar popup is an isolated overlay. It never participates in History layout. */
+.date-overlay-root{
+  position:fixed;
+  left:50%;
+  top:0;
+  width:732px;
+  height:1536px;
+  transform:translateX(-50%) scale(var(--scale));
+  transform-origin:top center;
+  pointer-events:none;
+  z-index:200000;
+}
+.date-overlay-root.open{pointer-events:auto}
+.date-menu-backdrop{
+  position:absolute;
+  left:0;top:106px;
+  width:732px;height:1338px;
+  background:transparent;
+  display:none;
+  z-index:1;
+}
+.date-menu-backdrop.open{display:block}
+.date-menu{
+  position:absolute;
+  left:318px;top:106px;
+  width:414px;height:414px;
+  background:#fff;
+  border-left:1px solid #e4e4e4;
+  border-bottom:1px solid #e4e4e4;
+  box-shadow:0 1px 3px rgba(0,0,0,.08);
+  display:none;
+  z-index:2;
+}
+.date-menu.open{display:block}
+.date-option{
+  position:relative;
+  width:414px;height:82px;
+  border-bottom:1px solid #e6e6e6;
+  display:flex;align-items:center;
+  padding:0 14px 0 12px;
+  background:#fff;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.date-option:last-child{border-bottom:0}
+.date-option:active{background:#f7f7f7}
+.date-icon{width:42px;height:42px;flex:0 0 42px;display:block;margin-right:10px;object-fit:contain;image-rendering:auto}
+.date-copy{line-height:1;min-width:0}
+.date-name{font-size:25px;font-weight:500;color:#303030;line-height:29px}
+.date-range{font-size:21px;font-weight:400;color:#8c8c8c;line-height:27px;white-space:nowrap}
+.date-option:focus-visible{outline:2px solid #2188c3;outline-offset:-2px}
+@media (max-width:731px){.screen{will-change:transform}.nav{will-change:transform}.date-menu{will-change:transform}}\n</style>
+</head>
+<body>
+<div class="stage">
+<div class="screen">
+<header class="header">
+<div class="menu" aria-hidden="true"><span></span><span></span><span></span></div>
+<div class="header-title"><div class="history">History</div><div class="symbols">All symbols</div></div>
+<div class="header-icons" style="color:#606060">
+<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 108" fill="#666666" fill-rule="evenodd" clip-rule="evenodd"><path d="M 33.00,70.00 33.00,82.00 36.00,84.00 36.00,87.00 38.00,87.00 39.00,90.00 41.00,90.00 43.00,93.00 48.00,93.00 49.00,96.00 53.00,96.00 53.00,82.00 50.00,81.00 50.00,79.00 48.00,78.00 47.00,73.00 47.00,75.00 46.00,76.00 45.00,75.00 45.00,70.00 43.00,70.00 42.00,67.00 39.00,67.00 38.00,70.00 37.00,69.00 36.00,70.00 Z M 121.00,65.00 118.00,64.00 111.00,64.00 104.00,67.00 101.00,67.00 100.00,69.00 96.00,70.00 96.00,78.00 98.00,78.00 101.00,80.00 101.00,90.00 98.00,91.00 98.00,96.00 96.00,97.00 96.00,101.00 93.00,102.00 93.00,107.00 95.00,107.00 96.00,105.00 100.00,104.00 101.00,102.00 103.00,102.00 108.00,96.00 109.00,97.00 110.00,94.00 112.00,93.00 112.00,91.00 115.00,90.00 115.00,88.00 118.00,87.00 119.00,84.00 128.00,84.00 128.00,76.00 125.00,75.00 125.00,70.00 122.00,69.00 Z M 53.00,12.00 51.00,12.00 52.00,13.00 51.00,14.00 46.00,14.00 46.00,16.00 43.00,18.00 42.00,22.00 40.00,23.00 39.00,25.00 39.00,46.00 42.00,47.00 42.00,51.00 44.00,51.00 49.00,57.00 53.00,57.00 53.00,41.00 50.00,40.00 50.00,29.00 53.00,28.00 Z M 61.00,0.00 60.00,3.00 60.00,104.00 62.00,105.00 63.00,107.00 67.00,107.00 69.00,104.00 71.00,104.00 71.00,97.00 72.00,96.00 77.00,96.00 78.00,93.00 82.00,93.00 82.00,91.00 85.00,90.00 86.00,87.00 88.00,86.00 89.00,84.00 89.00,80.00 92.00,79.00 92.00,67.00 90.00,67.00 89.00,64.00 87.00,64.00 86.00,61.00 84.00,61.00 83.00,58.00 82.00,58.00 80.00,55.00 77.00,54.00 77.00,52.00 72.00,52.00 71.00,51.00 71.00,29.00 74.00,28.00 75.00,31.00 77.00,31.00 78.00,34.00 81.00,35.00 82.00,39.00 85.00,39.00 87.00,36.00 89.00,36.00 89.00,32.00 92.00,31.00 92.00,30.00 89.00,28.00 89.00,22.00 87.00,22.00 85.00,18.00 82.00,17.00 80.00,14.00 75.00,14.00 74.00,12.00 73.00,14.00 71.00,12.00 71.00,3.00 69.00,3.00 68.00,0.00 Z M 72.00,68.00 73.00,69.00 74.00,68.00 75.00,69.00 75.00,72.00 78.00,73.00 78.00,81.00 75.00,82.00 74.00,84.00 71.00,83.00 71.00,69.00 Z M 35.00,0.00 32.00,3.00 28.00,3.00 27.00,5.00 24.00,5.00 24.00,7.00 21.00,8.00 20.00,11.00 18.00,11.00 16.00,17.00 12.00,20.00 3.00,20.00 4.00,21.00 1.00,22.00 0.00,24.00 3.00,26.00 4.00,35.00 7.00,37.00 7.00,40.00 8.00,39.00 10.00,41.00 10.00,43.00 21.00,43.00 22.00,40.00 27.00,40.00 29.00,37.00 30.00,39.00 30.00,37.00 32.00,36.00 33.00,34.00 35.00,34.00 35.00,29.00 31.00,29.00 30.00,26.00 27.00,25.00 27.00,22.00 30.00,21.00 30.00,14.00 32.00,13.00 32.00,8.00 35.00,7.00 35.00,5.00 38.00,3.00 36.00,3.00 Z"/></svg>
+<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 95" fill="#666666" fill-rule="evenodd" clip-rule="evenodd"><path d="M 82.00,0.00 82.00,2.00 79.00,3.00 78.00,6.00 76.00,6.00 76.00,8.00 74.00,9.00 74.00,11.00 71.00,12.00 70.00,14.00 68.00,14.00 68.00,16.00 65.00,17.00 64.00,20.00 61.00,21.00 60.00,24.00 58.00,24.00 58.00,26.00 56.00,27.00 56.00,29.00 53.00,31.00 53.00,36.00 57.00,38.00 58.00,41.00 60.00,41.00 60.00,39.00 61.00,38.00 64.00,38.00 64.00,36.00 67.00,35.00 68.00,32.00 70.00,32.00 71.00,30.00 73.00,30.00 73.00,28.00 76.00,26.00 77.00,23.00 79.00,24.00 79.00,93.00 82.00,94.00 88.00,94.00 90.00,93.00 90.00,23.00 91.00,22.00 93.00,23.00 94.00,26.00 96.00,26.00 98.00,28.00 97.00,29.00 99.00,29.00 104.00,33.00 106.00,36.00 106.00,38.00 111.00,38.00 112.00,41.00 113.00,41.00 115.00,38.00 117.00,38.00 117.00,30.00 115.00,30.00 114.00,27.00 112.00,27.00 111.00,24.00 108.00,23.00 108.00,21.00 105.00,19.00 103.00,15.00 98.00,12.00 97.00,9.00 95.00,9.00 94.00,7.00 88.00,2.00 89.00,0.00 Z M 29.00,0.00 29.00,2.00 26.00,3.00 26.00,70.00 23.00,71.00 22.00,68.00 20.00,68.00 19.00,65.00 17.00,65.00 16.00,62.00 14.00,62.00 13.00,60.00 11.00,60.00 8.00,56.00 6.00,56.00 5.00,59.00 4.00,57.00 2.00,60.00 0.00,60.00 0.00,64.00 2.00,65.00 3.00,70.00 8.00,71.00 9.00,72.00 9.00,76.00 10.00,76.00 11.00,78.00 13.00,78.00 14.00,81.00 17.00,82.00 18.00,85.00 20.00,85.00 21.00,88.00 23.00,88.00 24.00,91.00 25.00,91.00 26.00,93.00 29.00,94.00 37.00,94.00 40.00,93.00 40.00,92.00 42.00,91.00 42.00,89.00 45.00,88.00 46.00,83.00 49.00,82.00 50.00,79.00 52.00,79.00 53.00,77.00 55.00,77.00 58.00,73.00 58.00,71.00 61.00,70.00 62.00,67.00 64.00,67.00 64.00,59.00 62.00,59.00 61.00,57.00 59.00,56.00 55.00,60.00 53.00,60.00 52.00,62.00 50.00,62.00 50.00,64.00 47.00,65.00 47.00,67.00 44.00,68.00 44.00,70.00 42.00,72.00 40.00,70.00 39.00,67.00 40.00,66.00 40.00,60.00 38.00,59.00 38.00,54.00 40.00,52.00 40.00,50.00 38.00,48.00 38.00,47.00 40.00,46.00 40.00,38.00 38.00,37.00 39.00,35.00 38.00,33.00 38.00,28.00 40.00,26.00 39.00,23.00 40.00,22.00 40.00,13.00 38.00,12.00 38.00,3.00 37.00,0.00 Z M 38.00,21.00 39.00,20.00 40.00,22.00 39.00,23.00 Z"/></svg>
+<svg class="icon calendar-trigger" onclick="toggleDateMenu(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleDateMenu(event)}" tabindex="0" role="button" aria-label="Select date range" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 123" fill="#666666" fill-rule="evenodd" clip-rule="evenodd"><path d="M 66.00,80.00 65.00,85.00 63.00,86.00 62.00,88.00 65.00,89.00 65.00,92.00 67.00,92.00 69.00,94.00 77.00,94.00 77.00,93.00 79.00,92.00 79.00,83.00 77.00,82.00 78.00,80.00 Z M 56.00,80.00 53.00,80.00 52.00,79.00 50.00,80.00 46.00,80.00 45.00,83.00 45.00,92.00 46.00,92.00 47.00,94.00 55.00,94.00 57.00,92.00 59.00,92.00 59.00,83.00 57.00,83.00 Z M 24.00,80.00 24.00,92.00 26.00,92.00 27.00,94.00 34.00,94.00 36.00,92.00 38.00,92.00 38.00,83.00 36.00,83.00 35.00,80.00 32.00,80.00 31.00,79.00 Z M 93.00,78.00 92.00,80.00 89.00,80.00 89.00,82.00 86.00,83.00 86.00,85.00 83.00,86.00 83.00,88.00 85.00,88.00 86.00,89.00 86.00,92.00 88.00,92.00 90.00,94.00 97.00,94.00 98.00,92.00 100.00,92.00 100.00,89.00 101.00,88.00 100.00,87.00 100.00,82.00 98.00,83.00 97.00,82.00 98.00,80.00 94.00,80.00 Z M 88.00,54.00 88.00,55.00 85.00,57.00 86.00,59.00 83.00,60.00 83.00,61.00 85.00,61.00 86.00,64.00 89.00,65.00 89.00,67.00 92.00,68.00 97.00,67.00 98.00,65.00 100.00,65.00 100.00,61.00 101.00,60.00 103.00,61.00 103.00,60.00 100.00,59.00 100.00,56.00 98.00,56.00 97.00,53.00 90.00,53.00 Z M 66.00,54.00 64.00,60.00 65.00,61.00 65.00,64.00 67.00,65.00 68.00,67.00 71.00,67.00 72.00,68.00 77.00,67.00 77.00,66.00 79.00,65.00 79.00,57.00 77.00,56.00 77.00,53.00 69.00,53.00 Z M 46.00,54.00 45.00,57.00 45.00,65.00 46.00,67.00 50.00,67.00 52.00,68.00 53.00,67.00 56.00,67.00 57.00,65.00 59.00,65.00 59.00,57.00 57.00,57.00 55.00,53.00 48.00,53.00 Z M 24.00,54.00 24.00,67.00 27.00,67.00 28.00,68.00 38.00,67.00 38.00,56.00 36.00,57.00 34.00,53.00 27.00,53.00 Z M 4.00,18.00 3.00,23.00 1.00,24.00 1.00,36.00 3.00,37.00 1.00,39.00 1.00,50.00 2.00,51.00 1.00,53.00 1.00,100.00 3.00,102.00 1.00,103.00 0.00,105.00 1.00,106.00 1.00,109.00 3.00,112.00 2.00,114.00 3.00,115.00 3.00,118.00 5.00,118.00 6.00,121.00 109.00,121.00 111.00,122.00 112.00,121.00 118.00,121.00 118.00,119.00 121.00,118.00 121.00,115.00 124.00,114.00 124.00,24.00 121.00,23.00 121.00,18.00 116.00,18.00 115.00,15.00 101.00,15.00 101.00,20.00 98.00,21.00 97.00,24.00 90.00,25.00 89.00,27.00 86.00,27.00 85.00,25.00 83.00,25.00 82.00,27.00 80.00,27.00 79.00,25.00 77.00,24.00 72.00,24.00 71.00,23.00 71.00,18.00 68.00,17.00 69.00,15.00 70.00,16.00 69.00,15.00 54.00,15.00 53.00,20.00 51.00,21.00 51.00,23.00 48.00,24.00 45.00,27.00 39.00,27.00 38.00,26.00 40.00,25.00 36.00,25.00 35.00,27.00 31.00,27.00 30.00,25.00 25.00,24.00 24.00,23.00 23.00,15.00 10.00,15.00 9.00,18.00 Z M 14.00,42.00 17.00,41.00 18.00,38.00 106.00,38.00 107.00,41.00 109.00,41.00 110.00,44.00 112.00,46.00 112.00,102.00 110.00,104.00 110.00,106.00 106.00,109.00 18.00,109.00 17.00,107.00 14.00,106.00 Z M 1.00,34.00 2.00,33.00 3.00,35.00 2.00,36.00 Z M 90.00,26.00 91.00,25.00 93.00,26.00 92.00,27.00 Z M 80.00,0.00 80.00,2.00 78.00,3.00 78.00,5.00 75.00,7.00 74.00,10.00 75.00,14.00 78.00,15.00 78.00,17.00 80.00,18.00 80.00,20.00 85.00,20.00 86.00,21.00 87.00,20.00 92.00,20.00 92.00,18.00 94.00,17.00 94.00,3.00 92.00,3.00 91.00,0.00 Z M 27.00,7.00 27.00,14.00 28.00,17.00 30.00,18.00 30.00,20.00 36.00,20.00 37.00,21.00 39.00,20.00 45.00,20.00 46.00,17.00 49.00,17.00 49.00,16.00 48.00,17.00 47.00,15.00 49.00,14.00 49.00,7.00 48.00,7.00 47.00,4.00 44.00,2.00 44.00,0.00 33.00,0.00 33.00,2.00 30.00,3.00 Z"/></svg>
+</div>
+</header>
+
+<section class="summary">
+<div class="sumrow profit"><span class="label">Profit:</span><span class="leader"></span><span class="value">5 298.86</span></div>
+<div class="sumrow"><span class="label">Deposit:</span><span class="leader"></span><span class="value">500.00</span></div>
+<div class="sumrow withdrawal"><span class="label">Withdrawal:</span><span class="leader"></span><span class="value">-5 798.86</span></div>
+<div class="sumrow"><span class="label">Balance:</span><span class="leader"></span><span class="value">0.00</span></div>
+</section>
+<section class="balance-entry"><div class="label">Balance</div><div class="date">2026.07.07 21:58:45</div><div class="amount">-5 798.86</div></section>
+<main class="trades">
+<article class="trade expanded"><div class="accent"></div><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98723 → 0.98392</div><div class="source-line">2026.08.18 09:51:56, AETHRONBOT GOLD(tp)</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div><div class="meta"><div class="cell"><span class="k">S/L:</span><span class="v">0.98897</span></div><div class="cell"><span class="k">Swap:</span><span class="v">0.00</span></div><div class="cell"><span class="k">T/P:</span><span class="v">0.98392</span></div><div class="cell"><span class="k">Taxes:</span><span class="v">0.00</span></div><div class="cell"><span class="k">ID:</span><span class="v">379006544</span></div><div class="cell"><span class="k">Commission:</span><span class="v">0.00</span></div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+<article class="trade compact"><div class="trade-main"><div class="trade-title">EURUSD, <span class="action buy">buy 0.03</span></div><div class="prices">0.98722 → 0.98392</div><div class="date">2026.07.07 19:07:15</div><div class="profit">2.33</div></div></article>
+</main>
+</div>
+
+<nav class="nav" aria-label="Bottom navigation">
+<div class="nav-item" onclick="go('quotes')" role="button" tabindex="0" aria-label="Quotes"><svg viewBox="0 0 45 40" xmlns="http://www.w3.org/2000/svg" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 20.00,12.00 17.00,11.00 5.00,23.00 0.00,22.00 0.00,38.00 1.00,39.00 5.00,39.00 10.00,37.00 16.00,37.00 16.00,35.00 14.00,32.00 26.00,21.00 26.00,18.00 23.00,16.00 Z M 44.00,0.00 26.00,1.00 22.00,3.00 26.00,7.00 23.00,11.00 24.00,13.00 30.00,8.00 27.00,5.00 31.00,3.00 40.00,3.00 41.00,4.00 41.00,16.00 40.00,17.00 36.00,15.00 20.00,31.00 20.00,32.00 24.00,31.00 36.00,19.00 38.00,19.00 40.00,22.00 43.00,22.00 43.00,16.00 44.00,15.00 Z"/></svg></div>
+<div class="nav-item" onclick="go('chart')" role="button" tabindex="0" aria-label="Chart"><svg viewBox="0 0 47 46" xmlns="http://www.w3.org/2000/svg" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 22.00,6.00 21.00,7.00 21.00,11.00 18.00,12.00 16.00,14.00 16.00,25.00 17.00,26.00 16.00,27.00 16.00,34.00 17.00,36.00 20.00,36.00 21.00,37.00 21.00,45.00 24.00,45.00 25.00,44.00 25.00,37.00 26.00,36.00 29.00,36.00 30.00,34.00 29.00,31.00 30.00,30.00 30.00,24.00 29.00,23.00 30.00,22.00 30.00,17.00 29.00,16.00 30.00,15.00 28.00,12.00 25.00,11.00 25.00,7.00 Z M 21.00,16.00 25.00,16.00 26.00,17.00 26.00,31.00 24.00,33.00 22.00,33.00 20.00,31.00 20.00,17.00 Z M 39.00,0.00 38.00,1.00 38.00,4.00 35.00,5.00 33.00,7.00 33.00,25.00 35.00,27.00 38.00,28.00 38.00,34.00 41.00,34.00 42.00,33.00 42.00,28.00 46.00,26.00 46.00,6.00 42.00,4.00 42.00,1.00 41.00,0.00 Z M 5.00,0.00 4.00,1.00 4.00,4.00 0.00,6.00 0.00,26.00 4.00,28.00 4.00,32.00 7.00,33.00 8.00,32.00 8.00,29.00 10.00,27.00 12.00,27.00 12.00,6.00 8.00,4.00 8.00,1.00 7.00,0.00 Z"/></svg></div>
+<div class="nav-item" onclick="go('trade')" role="button" tabindex="0" aria-label="Trade"><svg viewBox="0 0 44 42" xmlns="http://www.w3.org/2000/svg" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 27.00,30.00 24.00,28.00 13.00,39.00 13.00,40.00 16.00,41.00 24.00,33.00 25.00,33.00 Z M 16.00,29.00 13.00,28.00 9.00,33.00 3.00,38.00 3.00,41.00 5.00,41.00 8.00,39.00 Z M 43.00,2.00 41.00,0.00 40.00,1.00 36.00,1.00 35.00,0.00 32.00,2.00 33.00,4.00 36.00,5.00 20.00,21.00 17.00,19.00 16.00,17.00 13.00,17.00 0.00,29.00 0.00,32.00 2.00,32.00 14.00,21.00 19.00,25.00 21.00,25.00 39.00,7.00 40.00,8.00 40.00,11.00 43.00,11.00 Z"/></svg></div>
+<div class="nav-item active" onclick="go('dashboard')" role="button" tabindex="0" aria-label="History"><svg viewBox="0 0 46 42" xmlns="http://www.w3.org/2000/svg" fill="#3F9FE8" fill-rule="evenodd" clip-rule="evenodd"><path d="M 8.00,0.00 5.00,4.00 1.00,14.00 1.00,21.00 0.00,22.00 0.00,30.00 1.00,31.00 1.00,34.00 0.00,35.00 1.00,36.00 1.00,39.00 5.00,41.00 6.00,40.00 40.00,40.00 41.00,41.00 45.00,38.00 45.00,18.00 40.00,3.00 37.00,0.00 Z M 5.00,15.00 8.00,9.00 8.00,7.00 12.00,3.00 33.00,3.00 36.00,5.00 41.00,18.00 39.00,20.00 31.00,20.00 29.00,26.00 26.00,29.00 22.00,30.00 19.00,29.00 16.00,26.00 14.00,20.00 7.00,20.00 5.00,18.00 Z"/></svg></div>
+<div class="nav-item" onclick="go('messages')" role="button" tabindex="0" aria-label="Messages"><svg viewBox="0 0 47 45" xmlns="http://www.w3.org/2000/svg" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 31.00,16.00 30.00,19.00 31.00,19.00 32.00,21.00 30.00,22.00 30.00,24.00 35.00,26.00 34.00,27.00 31.00,27.00 30.00,30.00 39.00,30.00 39.00,28.00 35.00,26.00 39.00,24.00 37.00,20.00 39.00,17.00 38.00,16.00 Z M 18.00,16.00 17.00,17.00 17.00,30.00 25.00,30.00 26.00,29.00 26.00,17.00 25.00,16.00 Z M 21.00,20.00 22.00,21.00 22.00,25.00 21.00,26.00 20.00,25.00 20.00,21.00 Z M 17.00,10.00 17.00,11.00 19.00,12.00 38.00,12.00 39.00,11.00 37.00,8.00 19.00,8.00 Z M 11.00,0.00 9.00,3.00 9.00,40.00 8.00,41.00 6.00,41.00 3.00,38.00 4.00,37.00 3.00,34.00 4.00,33.00 4.00,13.00 6.00,12.00 6.00,9.00 3.00,9.00 0.00,12.00 0.00,41.00 2.00,44.00 45.00,44.00 46.00,43.00 46.00,2.00 45.00,0.00 Z M 14.00,4.00 16.00,3.00 17.00,4.00 18.00,3.00 20.00,4.00 21.00,3.00 39.00,3.00 43.00,5.00 43.00,39.00 39.00,41.00 16.00,41.00 13.00,39.00 12.00,37.00 13.00,36.00 12.00,35.00 13.00,33.00 12.00,32.00 12.00,29.00 13.00,28.00 12.00,26.00 12.00,16.00 13.00,15.00 12.00,13.00 12.00,10.00 13.00,9.00 12.00,7.00 Z"/></svg></div>
+<div class="nav-item" role="button" tabindex="0" aria-label="More"><svg viewBox="0 0 46 45" xmlns="http://www.w3.org/2000/svg" fill="#6a6a6a" fill-rule="evenodd" clip-rule="evenodd"><path d="M 38.00,5.00 28.00,0.00 16.00,0.00 9.00,3.00 3.00,9.00 0.00,15.00 0.00,25.00 5.00,33.00 5.00,37.00 3.00,41.00 1.00,42.00 1.00,44.00 7.00,44.00 16.00,40.00 29.00,40.00 34.00,38.00 41.00,32.00 44.00,26.00 45.00,19.00 44.00,18.00 44.00,14.00 Z M 32.00,17.00 34.00,17.00 36.00,19.00 36.00,22.00 34.00,24.00 32.00,24.00 30.00,22.00 30.00,19.00 Z M 21.00,17.00 23.00,17.00 25.00,19.00 25.00,22.00 23.00,24.00 21.00,24.00 19.00,22.00 19.00,19.00 Z M 11.00,17.00 15.00,19.00 15.00,22.00 13.00,24.00 11.00,24.00 8.00,21.00 Z"/></svg></div>
+</nav>
+</div>
+<!-- Isolated calendar overlay: does not affect any History page geometry. -->
+<div class="date-overlay-root" id="dateOverlayRoot" aria-hidden="true">
+  <div class="date-menu-backdrop" id="dateMenuBackdrop" onclick="closeDateMenu()"></div>
+  <div class="date-menu" id="dateMenu" role="dialog" aria-modal="false" aria-label="Date range selector">
+
+  <div class="date-option" tabindex="0" data-period="Today" onclick="selectPeriod('Today')" onkeydown="optionKey(event,'Today')">
+    <img class="date-icon" src="data:image/png;base64,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" alt="" aria-hidden="true">
+    <div class="date-copy"><div class="date-name">Today</div><div class="date-range">2026.08.17</div></div>
+  </div>
+
+  <div class="date-option" tabindex="0" data-period="Last week" onclick="selectPeriod('Last week')" onkeydown="optionKey(event,'Last week')">
+    <img class="date-icon" src="data:image/png;base64,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" alt="" aria-hidden="true">
+    <div class="date-copy"><div class="date-name">Last week</div><div class="date-range">2026.08.10 - 2026.08.17</div></div>
+  </div>
+
+  <div class="date-option" tabindex="0" data-period="Last month" onclick="selectPeriod('Last month')" onkeydown="optionKey(event,'Last month')">
+    <img class="date-icon" src="data:image/png;base64,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" alt="" aria-hidden="true">
+    <div class="date-copy"><div class="date-name">Last month</div><div class="date-range">2026.07.01 - 2026.08.17</div></div>
+  </div>
+
+  <div class="date-option" tabindex="0" data-period="Last 3 months" onclick="selectPeriod('Last 3 months')" onkeydown="optionKey(event,'Last 3 months')">
+    <img class="date-icon" src="data:image/png;base64,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" alt="" aria-hidden="true">
+    <div class="date-copy"><div class="date-name">Last 3 months</div><div class="date-range">2026.05.01 - 2026.08.17</div></div>
+  </div>
+
+  <div class="date-option custom" tabindex="0" data-period="Custom period" onclick="selectPeriod('Custom period')" onkeydown="optionKey(event,'Custom period')">
+    <img class="date-icon" src="data:image/png;base64,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" alt="" aria-hidden="true">
+    <div class="date-copy"><div class="date-name">Custom period</div><div class="date-range">2026.08.17 - 2026.08.18</div></div>
+  </div>
+</div>
+
+</div>
+  </div>
+
+<script>
+(function(){
+  function fit(){const scale=Math.min(1,window.innerWidth/732);document.documentElement.style.setProperty('--scale',String(scale))}
+  fit();
+  window.addEventListener('resize',fit,{passive:true});
+})();
+
+const dateMenu=document.getElementById('dateMenu');
+const dateMenuBackdrop=document.getElementById('dateMenuBackdrop');
+const dateOverlayRoot=document.getElementById('dateOverlayRoot');
+
+function toggleDateMenu(event){
+  if(event) event.stopPropagation();
+  const open=!dateMenu.classList.contains('open');
+  dateMenu.classList.toggle('open',open);
+  dateMenuBackdrop.classList.toggle('open',open);
+  dateOverlayRoot.classList.toggle('open',open);
+  dateOverlayRoot.setAttribute('aria-hidden',open?'false':'true');
+}
+
+function closeDateMenu(){
+  if(!dateMenu || !dateMenuBackdrop || !dateOverlayRoot) return;
+  dateMenu.classList.remove('open');
+  dateMenuBackdrop.classList.remove('open');
+  dateOverlayRoot.classList.remove('open');
+  dateOverlayRoot.setAttribute('aria-hidden','true');
+}
+
+function optionKey(event,label){
+  if(event.key==='Enter'||event.key===' '){
+    event.preventDefault();
+    selectPeriod(label);
+  }
+}
+
+function selectPeriod(label){
+  /* Keep the existing history content unchanged for now.
+     Selecting a period simply closes the menu; the actual filtering can be wired later. */
+  closeDateMenu();
+  console.log('Selected period:',label);
+}
+
+function go(target){
+  if(target==='quotes'){location.href='index.html'}
+  else if(target==='dashboard'){location.href='dashboard.html'}
+  else{location.href=target+'.html'}
+}
+
+document.querySelectorAll('.nav-item[role="button"]').forEach(function(item){
+  item.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      item.click();
+    }
+  });
+});
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closeDateMenu();
+});
+</script>
+
+</div>
+</body>
+</html>
